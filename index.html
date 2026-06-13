@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Image to PDF Converter | Fast & Free Online Tool</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <meta name="description" content="Convert images to PDF online for free. Fast, secure, and easy Image to PDF converter with drag and drop support.">
 <meta name="keywords" content="image to pdf, pdf converter, jpg to pdf, png to pdf, online pdf tool">
 <meta name="author" content="Image2PDF Pro">
@@ -71,6 +72,7 @@ input{
 
 /* BUTTON */
 button{
+  <button onclick="convert()">Convert to PDF</button>
   margin-top:20px;
   padding:12px 25px;
   border:none;
@@ -148,6 +150,39 @@ footer{
     <button onclick="alert('Conversion feature connect karo backend se')">Convert to PDF</button>
   </div>
 </section>
+  <script>
+async function convert(){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let files = document.querySelector("input[type=file]").files;
+
+  if(!files.length){
+    alert("Please select images first");
+    return;
+  }
+
+  for(let i=0;i<files.length;i++){
+    let img = await toBase64(files[i]);
+    doc.addImage(img,"JPEG",10,10,180,160);
+
+    if(i < files.length - 1){
+      doc.addPage();
+    }
+  }
+
+  doc.save("Image2PDF-Pro.pdf");
+}
+
+/* helper */
+function toBase64(file){
+  return new Promise(res=>{
+    let reader = new FileReader();
+    reader.onload = ()=>res(reader.result);
+    reader.readAsDataURL(file);
+  });
+}
+</script>
 
 <section class="features" id="features">
   <div class="card">
