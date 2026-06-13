@@ -20,7 +20,7 @@ body{
   color:white;
   overflow-x:hidden;
 }
-
+<input type="file" id="files" multiple accept="image/*">
 /* NAVBAR */
 nav{
   display:flex;
@@ -49,7 +49,7 @@ nav a:hover{opacity:1;color:#38bdf8;}
   opacity:0.8;
   font-size:18px;
 }
-
+<button onclick="convert()">Convert to PDF</button>
 /* UPLOAD BOX */
 .upload-box{
   margin:40px auto;
@@ -69,7 +69,42 @@ nav a:hover{opacity:1;color:#38bdf8;}
 input{
   margin-top:20px;
 }
+<script>
+async function convert(){
 
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let files = document.getElementById("files").files;
+
+  if(!files || files.length === 0){
+    alert("Please select images first");
+    return;
+  }
+
+  for(let i = 0; i < files.length; i++){
+
+    let imgData = await toBase64(files[i]);
+
+    doc.addImage(imgData, "JPEG", 10, 10, 180, 160);
+
+    if(i !== files.length - 1){
+      doc.addPage();
+    }
+  }
+
+  doc.save("Image2PDF-Pro.pdf");
+}
+
+/* helper function */
+function toBase64(file){
+  return new Promise((resolve)=>{
+    let reader = new FileReader();
+    reader.onload = ()=> resolve(reader.result);
+    reader.readAsDataURL(file);
+  });
+}
+</script>
 /* BUTTON */
 button{
   <button onclick="convert()">Convert to PDF</button>
