@@ -4,24 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Free Image to PDF Converter Online | Fast & Secure Tool</title>
+<title>Free Image to PDF Converter Online | Fast Secure Tool</title>
 
-<meta name="description" content="Convert images to PDF online for free. Fast, secure, no signup required. Works on mobile and desktop.">
-<meta name="keywords" content="image to pdf, jpg to pdf, pdf converter, free online tool, convert images, pdf maker">
+<meta name="description" content="Convert images to PDF online for free. Fast, secure, no signup required. Mobile friendly and high quality PDF generator tool.">
+<meta name="keywords" content="image to pdf, jpg to pdf, pdf converter online, free pdf maker, image converter tool, online pdf tool, fast image to pdf">
 
 <style>
 body{
-  <div class="side left">
-  <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" />
-</div>
+  margin:0;
+  font-family:Arial;
+  background:#f5f7fb;
+}
 
-<div class="side right">
-  <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" />
-</div>
-  .side{
+/* SIDE LIONS */
+.side{
   position:fixed;
   top:0;
-  width:120px;
+  width:140px;
   height:100vh;
   z-index:0;
 }
@@ -30,88 +29,57 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:0.2;
+  opacity:0.15;
 }
-@media(max-width:768px){
-  .side{display:none;}
-}
+
 .left{left:0;}
 .right{right:0;}
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#f5f7fb;
-  color:#111;
+
+/* MAIN */
+main{
+  margin:0 auto;
+  max-width:800px;
+  padding:20px;
+  position:relative;
+  z-index:1;
 }
 
-/* NAVBAR */
-  
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 30px;
-  background:white;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-  position:sticky;
-  top:0;
-}
-<div style="text-align:center; margin:10px 0;">
-  <!-- AdSense Code Here -->
-</div>
-.logo{
+/* HEADER */
+header{
+  text-align:center;
+  padding:20px;
+  font-size:24px;
   font-weight:bold;
   color:#2563eb;
-  font-size:20px;
-}
-
-nav a{
-  margin-left:15px;
-  text-decoration:none;
-  color:#333;
 }
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:60px 20px;
+  padding:30px;
   background:linear-gradient(135deg,#2563eb,#1e40af);
   color:white;
-}
-
-.hero h1{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  opacity:0.9;
-}
-
-/* TOOL CARD */
-  <div style="margin:20px 0; text-align:center;">
-  <!-- AdSense Code Here -->
-</div>
-.card{
-  max-width:700px;
-  margin:-40px auto 30px;
-  background:white;
-  padding:25px;
   border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* TOOL BOX */
+.box{
+  margin-top:20px;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.1);
   text-align:center;
 }
 
+input{display:none;}
+
 .upload{
   border:2px dashed #2563eb;
-  padding:40px;
+  padding:30px;
   border-radius:10px;
   cursor:pointer;
 }
-
-.upload:hover{
-  background:#f0f6ff;
-}
-
-input{display:none;}
 
 button{
   margin-top:15px;
@@ -130,51 +98,56 @@ button:hover{
 /* FEATURES */
 .features{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  max-width:900px;
-  margin:50px auto;
-  padding:0 20px;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-top:30px;
 }
 
 .feature{
   background:white;
-  padding:20px;
+  padding:15px;
   border-radius:10px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
   text-align:center;
+  box-shadow:0 5px 10px rgba(0,0,0,0.05);
 }
-<div style="margin-top:30px; text-align:center;">
-  <!-- AdSense Code Here -->
-</div>
+
 /* FOOTER */
 footer{
   text-align:center;
   padding:20px;
+  margin-top:30px;
   background:#111827;
   color:white;
-  margin-top:40px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .side{display:none;}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">Image2PDFPro</div>
-  <div>
-    <a href="#">Home</a>
-    <a href="#tool">Tool</a>
-    <a href="#features">Features</a>
-  </div>
-</nav>
+<!-- SIDE LIONS -->
+<div class="side left">
+  <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" />
+</div>
 
-<section class="hero">
+<div class="side right">
+  <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" />
+</div>
+
+<main>
+
+<header>🖼️ Image2PDFPro</header>
+
+<div class="hero">
   <h1>Convert Images to PDF Instantly</h1>
-  <p>Fast, Secure & Free Online Tool – No Signup Required</p>
-</section>
+  <p>Free, Fast & Secure Online Tool</p>
+</div>
 
-<section class="card" id="tool">
+<div class="box">
 
   <label class="upload">
     📁 Click or Drop Images Here
@@ -183,19 +156,21 @@ footer{
 
   <button onclick="convert()">Convert to PDF</button>
 
-  <div id="preview"></div>
+  <div id="status"></div>
 
-</section>
+</div>
 
-<section class="features" id="features">
-  <div class="feature">⚡ Super Fast Conversion</div>
-  <div class="feature">🔒 100% Secure (Browser Based)</div>
+<div class="features">
+  <div class="feature">⚡ Fast Processing</div>
+  <div class="feature">🔒 Secure Browser Tool</div>
   <div class="feature">📱 Mobile Friendly</div>
-  <div class="feature">🆓 Free Forever</div>
-</section>
+  <div class="feature">💎 Free Forever</div>
+</div>
+
+</main>
 
 <footer>
-  © 2026 Image2PDFPro | All Rights Reserved
+© 2026 Image2PDFPro | All Rights Reserved
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -205,7 +180,7 @@ let files=[];
 
 document.getElementById("file").addEventListener("change",e=>{
   files=Array.from(e.target.files);
-  document.getElementById("preview").innerHTML="📸 "+files.length+" images selected";
+  document.getElementById("status").innerHTML="📸 "+files.length+" images selected";
 });
 
 async function convert(){
