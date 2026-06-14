@@ -1,258 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Image2PDFPro - Ultra Pro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Free Image to PDF Converter Online | Fast & Secure Tool</title>
 
 <meta name="description" content="Convert images to PDF online for free. Fast, secure, no signup required. Works on mobile and desktop.">
+<meta name="keywords" content="image to pdf, jpg to pdf, pdf converter, free online tool, convert images, pdf maker">
 
-<meta name="keywords" content="image to pdf, jpg to pdf, pdf converter, online tool, free pdf maker, convert images online">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
   margin:0;
-  font-family: Arial;
-  background:#0b1220;
+  font-family: Arial, sans-serif;
+  background:#f5f7fb;
+  color:#111;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  position:sticky;
+  top:0;
+}
+
+.logo{
+  font-weight:bold;
+  color:#2563eb;
+  font-size:20px;
+}
+
+nav a{
+  margin-left:15px;
+  text-decoration:none;
+  color:#333;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:60px 20px;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
   color:white;
 }
 
-header{
-  padding:15px;
-  text-align:center;
-  background:#111827;
-  font-size:20px;
-  font-weight:bold;
+.hero h1{
+  font-size:40px;
+  margin-bottom:10px;
 }
 
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
+.hero p{
+  opacity:0.9;
 }
 
-.drop{
-  border:2px dashed #3b82f6;
-  padding:30px;
+/* TOOL CARD */
+.card{
+  max-width:700px;
+  margin:-40px auto 30px;
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
   text-align:center;
+}
+
+.upload{
+  border:2px dashed #2563eb;
+  padding:40px;
   border-radius:10px;
-  background:#111827;
   cursor:pointer;
 }
 
-.drop:hover{
-  background:#1f2937;
+.upload:hover{
+  background:#f0f6ff;
 }
 
 input{display:none;}
 
-.controls{
+button{
   margin-top:15px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-select,button{
-  padding:10px;
+  background:#2563eb;
+  color:white;
+  padding:12px 20px;
   border:none;
   border-radius:8px;
-}
-
-button{
-  background:#3b82f6;
-  color:white;
   cursor:pointer;
 }
 
 button:hover{
-  background:#2563eb;
+  background:#1e40af;
 }
 
-.grid{
+/* FEATURES */
+.features{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:10px;
-  margin-top:20px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  max-width:900px;
+  margin:50px auto;
+  padding:0 20px;
 }
 
-.card{
-  position:relative;
-  border-radius:8px;
-  overflow:hidden;
-  cursor:grab;
+.feature{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  text-align:center;
 }
 
-.card img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-}
-
-.card button{
-  position:absolute;
-  top:5px;
-  right:5px;
-  background:red;
-  border:none;
-  border-radius:50%;
-  width:22px;
-  height:22px;
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#111827;
   color:white;
-}
-
-.progress{
-  margin-top:15px;
-  height:6px;
-  background:#1f2937;
-  border-radius:5px;
-  overflow:hidden;
-  display:none;
-}
-
-.bar{
-  height:100%;
-  width:0%;
-  background:#3b82f6;
+  margin-top:40px;
 }
 </style>
 </head>
 
 <body>
 
-<header>🚀 Image2PDFPro Ultra Pro</header>
+<nav>
+  <div class="logo">Image2PDFPro</div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#tool">Tool</a>
+    <a href="#features">Features</a>
+  </div>
+</nav>
 
-<div class="container">
+<section class="hero">
+  <h1>Convert Images to PDF Instantly</h1>
+  <p>Fast, Secure & Free Online Tool – No Signup Required</p>
+</section>
 
-<div class="drop" id="drop">
-  Click or Drop Images Here
-  <input type="file" id="file" multiple accept="image/*">
-</div>
+<section class="card" id="tool">
 
-<div class="controls">
-  <select id="quality">
-    <option value="1">HD Quality</option>
-    <option value="0.7">Standard</option>
-  </select>
+  <label class="upload">
+    📁 Click or Drop Images Here
+    <input type="file" id="file" multiple accept="image/*">
+  </label>
 
-  <select id="size">
-    <option value="a4">A4</option>
-    <option value="fit">Fit Image</option>
-  </select>
+  <button onclick="convert()">Convert to PDF</button>
 
-  <button onclick="generatePDF()">Generate PDF</button>
-</div>
+  <div id="preview"></div>
 
-<div class="progress" id="progress">
-  <div class="bar" id="bar"></div>
-</div>
+</section>
 
-<div class="grid" id="grid"></div>
+<section class="features" id="features">
+  <div class="feature">⚡ Super Fast Conversion</div>
+  <div class="feature">🔒 100% Secure (Browser Based)</div>
+  <div class="feature">📱 Mobile Friendly</div>
+  <div class="feature">🆓 Free Forever</div>
+</section>
 
-</div>
+<footer>
+  © 2026 Image2PDFPro | All Rights Reserved
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-let files = [];
+let files=[];
 
-const fileInput = document.getElementById("file");
-const drop = document.getElementById("drop");
+document.getElementById("file").addEventListener("change",e=>{
+  files=Array.from(e.target.files);
+  document.getElementById("preview").innerHTML="📸 "+files.length+" images selected";
+});
 
-drop.onclick = ()=> fileInput.click();
-
-fileInput.onchange = e=>{
-  files = Array.from(e.target.files);
-  render();
-};
-
-function render(){
-  const grid = document.getElementById("grid");
-  grid.innerHTML = "";
-
-  files.forEach((file,i)=>{
-    const reader = new FileReader();
-
-    reader.onload = e=>{
-      const div = document.createElement("div");
-      div.className = "card";
-      div.draggable = true;
-
-      div.ondragstart = ev=>{
-        ev.dataTransfer.setData("index", i);
-      };
-
-      div.ondrop = ev=>{
-        let from = ev.dataTransfer.getData("index");
-        let to = i;
-        [files[from], files[to]] = [files[to], files[from]];
-        render();
-      };
-
-      div.ondragover = e=>e.preventDefault();
-
-      div.innerHTML = `
-        <img src="${e.target.result}">
-        <button onclick="remove(${i})">x</button>
-      `;
-
-      grid.appendChild(div);
-    };
-
-    reader.readAsDataURL(file);
-  });
-}
-
-function remove(i){
-  files.splice(i,1);
-  render();
-}
-
-async function generatePDF(){
+async function convert(){
   if(files.length===0){
-    alert("Upload images first");
+    alert("Please upload images");
     return;
   }
 
-  const progress = document.getElementById("progress");
-  const bar = document.getElementById("bar");
-
-  progress.style.display="block";
-
-  const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF();
-
-  const quality = document.getElementById("quality").value;
-  const size = document.getElementById("size").value;
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF();
 
   for(let i=0;i<files.length;i++){
-
-    let img = await toBase64(files[i]);
-
+    const img=await toBase64(files[i]);
     if(i!==0) pdf.addPage();
-
-    let w = 180;
-    let h = 160;
-
-    if(size==="fit"){
-      w = 190;
-      h = 250;
-    }
-
-    pdf.addImage(img,"JPEG",10,10,w*quality,h*quality);
-
-    bar.style.width = ((i+1)/files.length)*100 + "%";
+    pdf.addImage(img,"JPEG",10,10,180,160);
   }
 
   pdf.save("Image2PDFPro.pdf");
-
-  setTimeout(()=>{
-    progress.style.display="none";
-    bar.style.width="0%";
-  },1000);
 }
 
 function toBase64(file){
